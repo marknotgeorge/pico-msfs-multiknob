@@ -2,17 +2,19 @@ cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
 
-project(main)
+project(pico-msfs-multiknob)
 
 pico_sdk_init()
 
-add_executable(main    
-    main.c
+add_subdirectory(lib)
+
+add_executable(pico-msfs-multiknob    
+    main.cpp
 )
 
-pico_enable_stdio_usb(main 1)
-pico_enable_stdio_uart(main 1)
+pico_enable_stdio_usb(pico-msfs-multiknob 1)
+pico_enable_stdio_uart(pico-msfs-multiknob 1)
 
-pico_add_extra_outputs(main)
+pico_add_extra_outputs(pico-msfs-multiknob)
 
-target_link_libraries(main pico_stdlib)
+target_link_libraries(pico-msfs-multiknob pico_stdlib hardware_i2c ssd1306)
